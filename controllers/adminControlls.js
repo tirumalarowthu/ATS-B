@@ -75,11 +75,11 @@ const auth = asyncHandler(async (req, res) => {
         if(verifyPassword){
             res.status(200).send(isAdmin)
         }else{
-            res.status(500).send({password:"Password not match"})
+            res.status(500).send({password:"Incorrect Password."})
         }
 
     }else{
-        res.status(404).send({email:"Please enter valid email"})
+        res.status(404).send({email:"Please enter valid email."})
     }
 })
 
