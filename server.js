@@ -40,7 +40,9 @@ app.get("/api",async(req,res)=>{
     
 })
 
-
+app.get("/",(req,res)=>{
+    res.send("Hi,Your Server Running Successfully.")
+})
 app.use("/", adminRoutes)
 app.use("/", applicantRoutes)
 connectDB()
