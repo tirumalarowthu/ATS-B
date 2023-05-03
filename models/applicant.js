@@ -8,10 +8,15 @@ const applicantSchema = mongoose.Schema({
         type: String,
         require: [true, "email is required"]
     },
-    mobile: {
+    mobile: { 
         type: Number,
         require: [true, "mobile number is required"]
     },  
+    role: {
+        type: String,
+        default: "MERN Stack Developer",
+        require: [true, "role is required"]
+    },
     collegeName: {
         type: String,
         require: [true, "college name is required"]
@@ -20,21 +25,22 @@ const applicantSchema = mongoose.Schema({
         type: String,
         require: [true, "qualification is required"]
     },
+    branch:{
+        type:String,
+        default:"computer science",
+        require:[true,"Branch is required"]
+    },
     passout: {
         type: Number,
         require: [true, 'passout is required']
     },
     nextRound: {
         type: String,
-        default: 'HR Round'
-    },
-    role: {
-        type: String,
-        require: [true, "role is required"]
+        default: 'Bhavya'
     },
     status: {
         type: String,
-        default: "Assignment"
+        default: "New"
     },
     experience: {
         type: Number,
