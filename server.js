@@ -3,6 +3,7 @@ const app = express()
 const dotenv = require("dotenv").config()
 const cors = require("cors")
 const connectDB = require("./config/db")
+const msg = require("./config/msg")
 const adminRoutes = require("./routes/adminRoutes")
 const applicantRoutes = require("./routes/applicantRoutes")
 const Applicant = require("./models/applicant")
@@ -43,8 +44,10 @@ app.get("/api",async(req,res)=>{
 app.get("/",(req,res)=>{
     res.send("Hi,Your Server Running Successfully.")
 })
+
 app.use("/", adminRoutes)
 app.use("/", applicantRoutes)
+app.use("/",msg)  
 connectDB()
 
 const server = app.listen(process.env.PORT, () => {
