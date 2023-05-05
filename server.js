@@ -3,7 +3,6 @@ const app = express()
 const dotenv = require("dotenv").config()
 const cors = require("cors")
 const connectDB = require("./config/db")
-const msg = require("./config/msg")
 const adminRoutes = require("./routes/adminRoutes")
 const applicantRoutes = require("./routes/applicantRoutes")
 const Applicant = require("./models/applicant")
@@ -16,38 +15,37 @@ app.get("/api/applicants", async (req, res) => {
     const users = await Applicant.find({})
         .skip(parseInt(start))
         .limit(parseInt(results))
-    if(users.length>0){
-        res.json(users) 
-    }else{
+    if (users.length > 0) {
+        res.json(users)
+    } else {
         res.send("Applicants not found..please refresh page")
     }
 })
-app.get("/api",async(req,res)=>{
-    const users= await Applicant.find({})
-    const searchTerm=req.query.search
-    if(!searchTerm){
+app.get("/api", async (req, res) => {
+    const users = await Applicant.find({})
+    const searchTerm = req.query.search
+    if (!searchTerm) {
         res.send(users)
-    }else{
-        const searchResults=await users.filter((item)=>{
+    } else {
+        const searchResults = await users.filter((item) => {
             return item.name.toLowerCase().includes(searchTerm.toLowerCase())
         })
-        if(searchResults.length>0){
+        if (searchResults.length > 0) {
             res.send(searchResults)
-        }else{
-            res.send("Search Results are empty")    
+        } else {
+            res.send("Search Results are empty")
         }
-        
+
     }
-    
+
 })
 
-app.get("/",(req,res)=>{
+app.get("/", (req, res) => {
     res.send("Hi,Your Server Running Successfully.")
 })
 
 app.use("/", adminRoutes)
 app.use("/", applicantRoutes)
-app.use("/",msg)  
 connectDB()
 
 const server = app.listen(process.env.PORT, () => {
