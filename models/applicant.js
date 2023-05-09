@@ -69,8 +69,7 @@ const applicantSchema = mongoose.Schema({
     comments: [{
         commentBy: String,
         comment: String,
-        cRound:String,
-        updatedAt:Date.now()
+        cRound:String
     }]
 },{ timestamps: true })
 
