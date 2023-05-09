@@ -68,8 +68,12 @@ const applicantSchema = mongoose.Schema({
     },
     comments: [{
         commentBy: String,
-        comment: String,
-        cRound:String
+        comment: String,  
+        cRound:String,
+        Date:{
+            type:Date,
+            default:Date.now()
+        }
     }]
 },{ timestamps: true })
 
