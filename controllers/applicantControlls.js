@@ -74,7 +74,7 @@ const ApplicantList = asyncHandler(async (req, res) => {
 const SingleApplicant = asyncHandler(async (req, res) => {
     const oneApplicant = await Applicant.findOne({ email: req.params.email })
     if (!oneApplicant) {
-        res.status(404).send("Please Enter Valid Email.")
+        res.status(404).send("Applicant not found.")
     } else {
         res.json(oneApplicant)
     }
