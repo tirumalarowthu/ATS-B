@@ -70,7 +70,7 @@ const applicantSchema = mongoose.Schema({
         commentBy: String,
         comment: String,
         cRound:String
-    }]
+    },{timestamps:true}]
 },{ timestamps: true })
 
 const Applicant = mongoose.model("Applicant", applicantSchema)
