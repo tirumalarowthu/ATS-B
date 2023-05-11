@@ -1,5 +1,7 @@
 const asyncHandler = require("express-async-handler")
 const Applicant = require("../models/applicant")
+const moment = require('moment-timezone');
+
 /*************add applicant  **************/
 const addApplicant = asyncHandler(async (req, res) => {
     try {
@@ -108,7 +110,7 @@ const ApplicantNextProcess = asyncHandler(async (req, res) => {
                     comment: comment,
                     commentBy: commentBy,
                     cRound: cRound,
-                    Date:Date.now()
+                    Date: moment().tz('Asia/Kolkata')
                 }
             }
         }, { new: true })
