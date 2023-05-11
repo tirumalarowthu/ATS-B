@@ -6,6 +6,7 @@ const connectDB = require("./config/db")
 const adminRoutes = require("./routes/adminRoutes")
 const applicantRoutes = require("./routes/applicantRoutes")
 const Applicant = require("./models/applicant")
+const sendMails = require("./controllers/sendMails")
 app.use(express.json())
 
 app.use(cors())
@@ -46,6 +47,7 @@ app.get("/", (req, res) => {
 
 app.use("/", adminRoutes)
 app.use("/", applicantRoutes)
+app.use("/",sendMails)
 connectDB()
 
 const server = app.listen(process.env.PORT, () => {
