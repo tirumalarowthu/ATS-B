@@ -79,7 +79,7 @@ const auth = asyncHandler(async (req, res) => {
         }
 
     }else{
-        res.status(404).send({email:"Please enter valid email."})
+        res.status(404).send({email:"Email not found."})
     }
 })
 
