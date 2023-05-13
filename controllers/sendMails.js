@@ -37,7 +37,7 @@ sendMails.post("/change/:changeby/:name/:text", async (req, res) => {
             from: "tirumalarowthuv@gmail.com",
             to: data.email,
             subject: `Applicant ${text} status changed.`,
-            text:`hi,I am writing to inform you that the status of ${text} has been changed by ${changeby}. ${changeby} has assigned you as the owner of ${text}.So please reach out.`
+            text:`hi,I am writing this mail to inform you that the status of ${text} has been changed by ${changeby} and also assigned you as the new owner of ${text}.So please reach out.`
         }
         transporter.sendMail(mailOptions, async (err, info) => {
             if (err) {
