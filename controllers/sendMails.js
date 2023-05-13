@@ -29,15 +29,15 @@ sendMails.post("/add/send/:text", async (req, res) => {
     })
 })
 
-sendMails.post("/change/:name/:text", async (req, res) => {
-    const { name, text } = req.params
+sendMails.post("/change/:changeby/:name/:text", async (req, res) => {
+    const { name, text, changeby } = req.params
     const data = await Admin.findOne({ name: name })
     if (data) {
         const mailOptions = {
             from: "tirumalarowthuv@gmail.com",
             to: data.email,
             subject: `Applicant ${text} status changed.`,
-            text: `Hi,I'm writing to inform you that the status of ${text} has changed.Now, you as the owner for ${text} , so please reach out.`
+            text: `Hi,I'm writing to inform you that the status of ${text} has changed by ${changeby} and ${changeby} assigned you are owner for ${text} , so please reach out.`
         }
         transporter.sendMail(mailOptions, async (err, info) => {
             if (err) {
