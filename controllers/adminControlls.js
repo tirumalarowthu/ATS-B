@@ -94,8 +94,18 @@ const forgotPassword = asyncHandler(async (req, res) => {
         res.status(404).send("Invalid email")
     }
 })
+///Admin list 
+const AdminList=asyncHandler(async(req,res)=>{
+    const admins=await Admin.find({},{name:1,_id:0})
+    if(admins.length===0){
+        res.send([])
+    }else{
+        const adminList=await admins.map(admin=>admin.name)
+        res.send(adminList)
+    }
+})
 
-module.exports = { registerAdmin, auth, forgotPassword }
+module.exports = { registerAdmin, auth, forgotPassword, AdminList}
 
 
 
