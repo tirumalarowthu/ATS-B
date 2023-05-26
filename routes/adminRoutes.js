@@ -7,4 +7,4 @@ adminRoutes.post("/admin/register",registerAdmin)
 adminRoutes.patch("/admin/forgot_password/:email",forgotPassword)
 
 module.exports=adminRoutes
-
+ 
