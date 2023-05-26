@@ -1,5 +1,6 @@
 const express = require("express")
 const { addApplicant, ApplicantList, SingleApplicant, ApplicantNextProcess, updateComment, emailSearch, deteleApplicant, ApplicantById, } = require("../controllers/applicantControlls")
+const Applicant = require("../models/applicant")
 const applicantRoutes = express.Router()
 
 
